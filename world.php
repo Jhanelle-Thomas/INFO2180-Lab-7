@@ -1,7 +1,7 @@
 <?php
 
-$country = $_GET['country'];
-$all = $_GET['all'];
+$country = htmlspecialchars(strip_tags(trim($_GET['country'])));
+$all = htmlspecialchars(strip_tags(trim($_GET['all'])));
 
 $host = getenv('IP');
 $username = getenv('C9_USER');
@@ -26,9 +26,14 @@ if(isset($_GET['all']) && $all == 'true') {
 
 else if(isset($_GET['country']) && $country != "") {
 
-    $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
-
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //$stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
+    
+    $stmt = $conn->prepare("SELECT * FROM countries WHERE name LIKE ?");
+    $stmt->execute(array($country));
+    
+    //$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    $results = $stmt->fetchAll();
     
     echo '<ul>';
     foreach ($results as $row) {

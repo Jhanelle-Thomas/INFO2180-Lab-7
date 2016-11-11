@@ -6,38 +6,34 @@ $(document).ready(function() {
     
     lookupButton.on("click", function(element) {
         element.preventDefault();
-        var country = $("#country").val();
-        //var checkbox = document.getElementById("all").checked;
-        var checkbox = $("#all");
-
-        if(checkbox.is(":checked")) {
-            $.ajax("world.php?all=true", {
-                method: 'GET'
-            }).done(function(response) {
-                $(result).html(response);
-            }).fail(function() {
-                $(result).html("There was a problem with the request.");
-            });  
+        if (document.getElementById("country").checkValidity()) {
+            var country = $("#country").val();
+            //var checkbox = document.getElementById("all").checked;
+            var checkbox = $("#all");
+    
+            if(checkbox.is(":checked")) {
+                $.ajax("world.php?all=true", {
+                    method: 'GET'
+                }).done(function(response) {
+                    $(result).html(response);
+                }).fail(function() {
+                    $(result).html("There was a problem with the request.");
+                });  
+            } else {
+                if (country != "") {
+                    $.ajax("world.php?country=" + country, {
+                        method: 'GET'
+                    }).done(function(response) {
+                        $(result).html(response);
+                    }).fail(function() {
+                        $(result).html("There was a problem with the request.");
+                    });
+                } else {
+                    $(result).html("Please enter a country.");
+                }
+            }
         } else {
-            $.ajax("world.php?country=" + country, {
-                method: 'GET'
-            }).done(function(response) {
-                $(result).html(response);
-            }).fail(function() {
-                $(result).html("There was a problem with the request.");
-            });
+            $(result).html($("#country").validationMessage);
         }
-        
-        /*if (country != "") {
-            $.ajax("world.php?country=" + country, {
-                method: 'GET'
-            }).done(function(response) {
-                $(result).html(response);
-            }).fail(function() {
-                $(result).html("There was a problem with the request.");
-            });     
-        } else {
-            $(result).html("Please enter a country.");
-        }*/
     });
 });
