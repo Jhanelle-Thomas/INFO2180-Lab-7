@@ -2,12 +2,15 @@ $(document).ready(function() {
     var lookupButton = $("#lookup");
     var result = $("#result");
     
+    $("h1").before("<img id = 'pic' src='world.png' alt='ClipArt of the Earth' />");
+    
     lookupButton.on("click", function(element) {
         element.preventDefault();
         var country = $("#country").val();
-        var checkbox = document.getElementById("all").checked;
+        //var checkbox = document.getElementById("all").checked;
+        var checkbox = $("#all");
 
-        if(checkbox) {
+        if(checkbox.is(":checked")) {
             $.ajax("world.php?all=true", {
                 method: 'GET'
             }).done(function(response) {

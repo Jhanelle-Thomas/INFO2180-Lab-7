@@ -1,0 +1,58 @@
+h1 {
+    background-color: #00e600;
+    border-radius: 10px;
+    height: 100px;
+    width: 825px;
+    font-size: 75px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    display: inline-block;
+    
+}
+
+#controls {
+    background-color: #33d6ff;
+    border-radius: 10px;
+    height: 90px;
+    width: 925px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#result {
+    background-color: #ffffcc;
+    border-radius: 10px;
+    width: 915px;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+#pic {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+
+button {
+    height: 33px;
+    border-radius: 8px;
+    margin-left: 5px;
+}
+
+label {
+    font-size: 20px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black
+}
+
+input {
+    border-radius: 5px;
+    height: 25px;
+    font-size: 15px;
+}
